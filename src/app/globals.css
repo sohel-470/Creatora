@@ -1,2 +1,46 @@
 @import "tailwindcss";
 
+@import "tailwindcss";
+
+/* Custom Steam Animation */
+@keyframes steam-rise {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-25px);
+    opacity: 0;
+  }
+}
+
+.animate-steam {
+  animation: steam-rise 3s ease-in-out infinite;
+}
+
+.animate-steam-delay-1 {
+  animation: steam-rise 3s ease-in-out infinite 1s;
+}
+
+.animate-steam-delay-2 {
+  animation: steam-rise 3s ease-in-out infinite 2s;
+}
+
+@theme {
+  --animate-float: float 3s ease-in-out infinite;
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-12px);
+    }
+  }
+}
