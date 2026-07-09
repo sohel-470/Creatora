@@ -1,8 +1,18 @@
 'use client'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useSession, signIn, signOut } from "next-auth/react"
+import { useRouter } from 'next/navigation'
 
-const signin = () => {
+const Signin = () => {
+    const {data: session} = useSession()
+    const router = useRouter()
+
+    useEffect(() => {
+      if(session){
+        router.push('/dashboard')
+      }
+    }, [session,router])
+    
     return (
         <div className=' container mx-auto py-14'>
             <h1 className='text-center font-bold text-4xl'>Sign In to Creatora</h1>
@@ -144,4 +154,4 @@ const signin = () => {
     )
 }
 
-export default signin
+export default Signin
